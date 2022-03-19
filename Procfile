@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS --port $PORT -cp build/staging:build/staging/* com.example.D.S3.Application
+web: java $JAVA_OPTS -cp build/staging:build/staging/* com.example.D.S3.Application
