@@ -47,15 +47,15 @@ public class Bot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             if (update.getMessage().getText().equalsIgnoreCase("/Бот")) {
 
-                try {
-                    Desktop d=Desktop.getDesktop();
-
-                    d.browse(new URI("https://ds33bot.herokuapp.com/hello"));
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                } catch (URISyntaxException use) {
-                    use.printStackTrace();
-                }
+//                try {
+//                    Desktop d=Desktop.getDesktop();
+//
+//                    d.browse(new URI("https://ds33bot.herokuapp.com/hello"));
+//                } catch (IOException ioe) {
+//                    ioe.printStackTrace();
+//                } catch (URISyntaxException use) {
+//                    use.printStackTrace();
+//                }
 
 
                 String firstName = update.getMessage().getFrom().getFirstName();
