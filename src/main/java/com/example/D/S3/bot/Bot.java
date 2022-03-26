@@ -3,6 +3,8 @@ package com.example.D.S3.bot;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -12,6 +14,10 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +46,18 @@ public class Bot extends TelegramLongPollingBot {
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             if (update.getMessage().getText().equalsIgnoreCase("/Бот")) {
+
+                try {
+                    Desktop d=Desktop.getDesktop();
+
+                    d.browse(new URI("https://ds33bot.herokuapp.com/hello"));
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                } catch (URISyntaxException use) {
+                    use.printStackTrace();
+                }
+
+
                 String firstName = update.getMessage().getFrom().getFirstName();
                 SendMessage message = new SendMessage();
                 message.setChatId(update.getMessage().getChatId().toString());
@@ -51,7 +69,7 @@ public class Bot extends TelegramLongPollingBot {
                 InlineKeyboardButton inlineKeyboardButton2 = new InlineKeyboardButton();
                 InlineKeyboardButton inlineKeyboardButton3 = new InlineKeyboardButton();
                 InlineKeyboardButton inlineKeyboardButton4 = new InlineKeyboardButton();
-                InlineKeyboardButton inlineKeyboardButton5 = new InlineKeyboardButton();
+                //InlineKeyboardButton inlineKeyboardButton5 = new InlineKeyboardButton();
                 InlineKeyboardButton inlineKeyboardButton6 = new InlineKeyboardButton();
                 InlineKeyboardButton inlineKeyboardButton7 = new InlineKeyboardButton();
                 InlineKeyboardButton inlineKeyboardButton8 = new InlineKeyboardButton();
@@ -67,8 +85,8 @@ public class Bot extends TelegramLongPollingBot {
                 inlineKeyboardButton3.setCallbackData("http://дс33.рф");
                 inlineKeyboardButton4.setText("Вконтакте");
                 inlineKeyboardButton4.setCallbackData("https://vk.com/detskiy_sad_33");
-                inlineKeyboardButton5.setText("Страница в Инстаграм");
-                inlineKeyboardButton5.setCallbackData("https://instagram.com/detskiysad_33");
+                //inlineKeyboardButton5.setText("Страница в Инстаграм");
+                //inlineKeyboardButton5.setCallbackData("https://instagram.com/detskiysad_33");
                 inlineKeyboardButton6.setText("Канал в телеграм");
                 inlineKeyboardButton6.setCallbackData("https://t.me/ds33spb");
                 inlineKeyboardButton7.setText("Часы работы ответств. за доп. услуги");
@@ -96,7 +114,7 @@ public class Bot extends TelegramLongPollingBot {
                 List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow4 = new ArrayList<>();
-                List<InlineKeyboardButton> keyboardButtonsRow5 = new ArrayList<>();
+                //List<InlineKeyboardButton> keyboardButtonsRow5 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow6 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow7 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow8 = new ArrayList<>();
@@ -107,7 +125,7 @@ public class Bot extends TelegramLongPollingBot {
                 keyboardButtonsRow2.add(inlineKeyboardButton2);
                 keyboardButtonsRow3.add(inlineKeyboardButton3);
                 keyboardButtonsRow4.add(inlineKeyboardButton4);
-                keyboardButtonsRow5.add(inlineKeyboardButton5);
+                //keyboardButtonsRow5.add(inlineKeyboardButton5);
                 keyboardButtonsRow6.add(inlineKeyboardButton6);
                 keyboardButtonsRow7.add(inlineKeyboardButton7);
                 keyboardButtonsRow8.add(inlineKeyboardButton8);
@@ -118,7 +136,7 @@ public class Bot extends TelegramLongPollingBot {
                 rowList.add(keyboardButtonsRow2);
                 rowList.add(keyboardButtonsRow3);
                 rowList.add(keyboardButtonsRow4);
-                rowList.add(keyboardButtonsRow5);
+                //rowList.add(keyboardButtonsRow5);
                 rowList.add(keyboardButtonsRow6);
                 rowList.add(keyboardButtonsRow7);
                 rowList.add(keyboardButtonsRow8);
