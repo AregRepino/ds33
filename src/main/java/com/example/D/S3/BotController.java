@@ -11,12 +11,12 @@ import java.net.URISyntaxException;
 @RestController
 public class BotController {
 
-//    https://ds33bot.herokuapp.com/hello
+    //    https://ds33bot.herokuapp.com/hello
     @GetMapping("/hello")
-    public String hello () {
+    public String hello() {
 
         try {
-            Desktop d=Desktop.getDesktop();
+            Desktop d = Desktop.getDesktop();
 
             d.browse(new URI("https://ds33bot.herokuapp.com/hello"));
         } catch (IOException ioe) {
@@ -24,7 +24,6 @@ public class BotController {
         } catch (URISyntaxException use) {
             use.printStackTrace();
         }
-
 
 
         return "hello";
