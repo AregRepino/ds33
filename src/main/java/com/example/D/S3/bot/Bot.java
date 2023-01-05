@@ -3,8 +3,6 @@ package com.example.D.S3.bot;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -14,10 +12,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +19,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class Bot extends TelegramLongPollingBot {
-
 
 
     @Override
@@ -46,17 +39,6 @@ public class Bot extends TelegramLongPollingBot {
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             if (update.getMessage().getText().equalsIgnoreCase("/Бот")) {
-
-//                try {
-//                    Desktop d=Desktop.getDesktop();
-//
-//                    d.browse(new URI("https://ds33bot.herokuapp.com/hello"));
-//                } catch (IOException ioe) {
-//                    ioe.printStackTrace();
-//                } catch (URISyntaxException use) {
-//                    use.printStackTrace();
-//                }
-
 
                 String firstName = update.getMessage().getFrom().getFirstName();
                 SendMessage message = new SendMessage();
@@ -108,7 +90,7 @@ public class Bot extends TelegramLongPollingBot {
                 inlineKeyboardButton10.setCallbackData("Расписание");
 
 
-               // inlineKeyboardButton9.setCallbackData();
+                // inlineKeyboardButton9.setCallbackData();
 
                 List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
                 List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
@@ -166,7 +148,7 @@ public class Bot extends TelegramLongPollingBot {
                     sendPhoto.setPhoto(inputFile);
                     sendPhoto.setCaption(data);
                     execute(sendPhoto);
-                }else {
+                } else {
                     List<String> list = new ArrayList<>();
                     list.add("1.Английский язык");
                     list.add("2.Вокальный кружок");
@@ -179,13 +161,11 @@ public class Bot extends TelegramLongPollingBot {
 
                     sendMessage.setText(data);
                     if (sendMessage.getText().equals("red")) {
-                        sendMessage.setText(String.join("\n",list));
+                        sendMessage.setText(String.join("\n", list));
                     }
                     sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId().toString());
                     execute(sendMessage);
                 }
-
-
 
 
             } catch (TelegramApiException e) {
